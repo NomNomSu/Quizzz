@@ -13,6 +13,7 @@ android:fillViewport="true">
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context="com.example.g.quizzz.MainActivity">
 
     <TextView
@@ -20,8 +21,11 @@ android:fillViewport="true">
         android:layout_height="wrap_content"
         android:text="@string/info"
         android:id="@+id/quiz_info"
-        android:textSize="@dimen/labels_text_size"
+        android:textSize="@dimen/main_text"
         android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -31,6 +35,8 @@ android:fillViewport="true">
         android:textSize="@dimen/labels_text_size"
         android:layout_gravity="center"
         android:gravity="center"
+        android:textColor="@color/textColor"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,20 +46,25 @@ android:fillViewport="true">
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="-"
-            android:textSize="40sp"
+            android:textColor="@color/textColor"
+            android:backgroundTint="@color/colorAccent"
+            android:textSize="@dimen/main_text"
             android:id="@+id/dec_questions"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/question_nr_size"
             android:text="@string/question_nr"
+            android:textColor="@color/textColor"
             android:id="@+id/question_counter" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="+"
-            android:textSize="40sp"
-            android:id="@+id/inc_questions"/>
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/main_text"
+            android:id="@+id/inc_questions" />
     </LinearLayout>
 
 
@@ -61,7 +72,11 @@ android:fillViewport="true">
         android:layout_width="match_parent"
         android:layout_height="@dimen/ch_topic_height"
         android:text="@string/start_button"
-        android:id="@+id/start"/>
+        android:id="@+id/start"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/main_text"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"/>
 
 </LinearLayout>
 </ScrollView>

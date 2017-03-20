@@ -9,15 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/textColor"
         android:text="@string/question_label" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
 
         <ProgressBar
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:indeterminate="false"
             android:progressDrawable="@drawable/circle_progress_bar"
             android:background="@drawable/circle_progress_bar_shape"
@@ -28,10 +31,12 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
         <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="00"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/clock_text_size"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:id="@+id/timer"/>
@@ -44,6 +49,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/question"
+            android:textSize="@dimen/question_text_size"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/textColor"
             android:id="@+id/question"
             android:layout_weight="2"/>
         <RadioGroup
@@ -55,27 +63,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/answer1"
-                android:id="@+id/answer_one_radio"/>
+                android:id="@+id/answer_one_radio"
+                android:layout_weight="1"/>
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/answer2"
-                android:id="@+id/answer_two_radio"/>
+                android:id="@+id/answer_two_radio"
+                android:layout_weight="1"/>
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/answer3"
-                android:id="@+id/answer_three_radio"/>
+                android:id="@+id/answer_three_radio"
+                android:layout_weight="1"/>
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/answer4"
-                android:id="@+id/answer_four_radio"/>
+                android:id="@+id/answer_four_radio"
+                android:layout_weight="1"/>
         </RadioGroup>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ok"
-            android:id="@+id/apply_answer"/>
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/main_text"
+            android:background="@color/colorPrimary"
+            android:id="@+id/apply_answer"
+            android:layout_weight="1"/>
     </LinearLayout>
 </LinearLayout>

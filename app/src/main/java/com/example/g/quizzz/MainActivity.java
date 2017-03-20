@@ -47,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
         decQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currQ == 1) {
-                    decQ.setEnabled(false);
+                if (currQ > 2) {
                     incQ.setEnabled(true);
-                } else {decQ.setEnabled(true);}
+                    decQ.setEnabled(true);
+                } else {decQ.setEnabled(false);}
                 currQ = currQ - 1;
                 displayWhenClicked(currQ);
                 //Log.d("Decimation", "User wants to answer:" + currQ + "questions.");

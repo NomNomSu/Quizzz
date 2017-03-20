@@ -6,13 +6,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/question_label"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/textColor"
         android:gravity="center"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
         <ProgressBar
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:indeterminate="false"
             android:progressDrawable="@drawable/circle_progress_bar"
             android:background="@drawable/circle_progress_bar_shape"
@@ -21,12 +24,14 @@
             android:progress="30"
             android:id="@+id/progress_bar"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true" />
         <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="00"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/clock_text_size"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:id="@+id/timer"/>
@@ -35,30 +40,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/question"
-        android:id="@+id/question"/>
+        android:textSize="@dimen/question_text_size"
+        android:id="@+id/question"
+        android:textColor="@color/textColor"
+        android:background="@color/colorPrimary"
+        android:layout_weight="2" />
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/answer1"
-        android:id="@+id/answer_one_box"/>
+        android:id="@+id/answer_one_box"
+        android:layout_weight="1"/>
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/answer2"
-        android:id="@+id/answer_two_box"/>
+        android:id="@+id/answer_two_box"
+        android:layout_weight="1"/>
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/answer3"
-        android:id="@+id/answer_three_box"/>
+        android:id="@+id/answer_three_box"
+        android:layout_weight="1"/>
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/answer4"
-        android:id="@+id/answer_four_box"/>
+        android:id="@+id/answer_four_box"
+        android:layout_weight="1"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ok"
-        android:id="@+id/apply_answer"/>
+        android:id="@+id/apply_answer"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/main_text"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_weight="1"/>
 </LinearLayout>
