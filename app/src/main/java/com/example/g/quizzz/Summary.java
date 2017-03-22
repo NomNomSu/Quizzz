@@ -9,8 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Summary extends AppCompatActivity {
-    private int corQ;
-    private int chq;
+    private int correctQuestions;
+    private int howManyQuestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,25 +18,25 @@ public class Summary extends AppCompatActivity {
         setContentView(R.layout.activity_summary);
         // Loads saved settings from previous Activities
         Bundle extras = getIntent().getExtras();
-        chq = extras.getInt("max");
-        Log.d("SumA", "Max questions: " + chq);
-        corQ = extras.getInt("corQ");
-        Log.d("SumA", "Correct questions: " + corQ);
+        howManyQuestions = extras.getInt("max");
+        Log.d("SumA", "Max questions: " + howManyQuestions);
+        correctQuestions = extras.getInt("correctQuestions");
+        Log.d("SumA", "Correct questions: " + correctQuestions);
         //Allocates GUI
         TextView scoreg = (TextView) findViewById(R.id.scoreg);
         TextView scorem = (TextView) findViewById(R.id.scorem);
 
-        if (corQ < 10) {
-            scoreg.setText("0" + corQ);
+        if (correctQuestions < 10) {
+            scoreg.setText("0" + correctQuestions);
         } else {
-            scoreg.setText("" + corQ);
+            scoreg.setText("" + correctQuestions);
         }
-        if ((chq +1)< 10) {
-            scorem.setText("0" + (chq + 1));
+        if ((howManyQuestions + 1) < 10) {
+            scorem.setText("0" + (howManyQuestions + 1));
         } else {
-            scorem.setText("" + (chq + 1));
+            scorem.setText("" + (howManyQuestions + 1));
         }
-        Toast toast = Toast.makeText(getApplicationContext(), "Answers you got correct: " + corQ + "!", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Answers you got correct: " + correctQuestions + "!", Toast.LENGTH_SHORT);
         toast.show();
     }
 

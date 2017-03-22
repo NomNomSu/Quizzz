@@ -15,10 +15,10 @@ import android.widget.TextView;
 
 public class Questions extends AppCompatActivity {
     private String[] questions;
-    private int curQ = 0;
-    private int chq;
+    private int currentQuestion = 0;
+    private int howManyQuestions;
     private CountDownTimer cDown;
-    private int corQ;
+    private int correctQuestions;
 
 
     @Override
@@ -26,34 +26,34 @@ public class Questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //added
         Bundle extras = getIntent().getExtras();
-        chq = extras.getInt("currQ");
-        questions = new String[chq];
+        howManyQuestions = extras.getInt("currQ");
+        questions = new String[howManyQuestions];
         questions = extras.getStringArray("questions");
 
-        //Log.d("CurrQ", "" + chq);
+        //Log.d("CurrQ", "" + howManyQuestions);
         //Log.d("Array", questions[11]);
 
-        chq = chq - 1;
+        howManyQuestions = howManyQuestions - 1;
         QuestionEngine();
     }
 
     public String[] SplitQuestion(String[] questions) {
-        String[] split_question = questions[curQ].split(";");
-        Log.d("Splitter", "Splitted question is : " + curQ);
+        String[] split_question = questions[currentQuestion].split(";");
+        Log.d("Splitter", "Splitted question is : " + currentQuestion);
         return split_question;
     }
 
     public void CDown() {
         cDown = new CountDownTimer(16000, 0001) {
 
-            TextView cD = (TextView) findViewById(R.id.timer);
-            ProgressBar pB = (ProgressBar) findViewById(R.id.progress_bar);
+            TextView cDTimer = (TextView) findViewById(R.id.timer);
+            ProgressBar pBar = (ProgressBar) findViewById(R.id.progress_bar);
 
             public void onTick(long millisUntilFinished) {
                 Integer clock = (int) (long) millisUntilFinished / 1000;
-                cD.setText("" + millisUntilFinished / 1000);
-                pB.setProgress(clock);
-                pB.setMax(16);
+                cDTimer.setText("" + millisUntilFinished / 1000);
+                pBar.setProgress(clock);
+                pBar.setMax(16);
             }
 
             public void onFinish() {
@@ -74,7 +74,7 @@ public class Questions extends AppCompatActivity {
             RadioButton answer_four_radio = (RadioButton) findViewById(R.id.answer_four_radio);
             TextView question = (TextView) findViewById(R.id.question);
             TextView questionLabel = (TextView) findViewById(R.id.questionLabel);
-            questionLabel.setText("Question " + (curQ + 1) + " of " + (chq + 1));
+            questionLabel.setText("Question " + (currentQuestion + 1) + " of " + (howManyQuestions + 1));
             question.setText(split_question[1]);
             answer_one_radio.setText(split_question[2]);
             answer_two_radio.setText(split_question[3]);
@@ -89,7 +89,7 @@ public class Questions extends AppCompatActivity {
             CheckBox answer_four_box = (CheckBox) findViewById(R.id.answer_four_box);
             TextView question = (TextView) findViewById(R.id.question);
             TextView questionLabel = (TextView) findViewById(R.id.questionLabel);
-            questionLabel.setText("Question " + (curQ + 1) + " of " + (chq + 1));
+            questionLabel.setText("Question " + (currentQuestion + 1) + " of " + (howManyQuestions + 1));
             question.setText(split_question[1]);
             answer_one_box.setText(split_question[2]);
             answer_two_box.setText(split_question[3]);
@@ -100,14 +100,14 @@ public class Questions extends AppCompatActivity {
             setContentView(R.layout.activity_questions_input);
             TextView question = (TextView) findViewById(R.id.question);
             TextView questionLabel = (TextView) findViewById(R.id.questionLabel);
-            questionLabel.setText("Question " + (curQ + 1) + " of " + (chq + 1));
+            questionLabel.setText("Question " + (currentQuestion + 1) + " of " + (howManyQuestions + 1));
             question.setText(split_question[1]);
             CDown();
         }
     }
 
     public void CheckAnswer() {
-        if (curQ < chq) {
+        if (currentQuestion < howManyQuestions) {
             String[] split_question = SplitQuestion(questions);
             if (split_question[0].equals("single")) {
                 RadioGroup rg = (RadioGroup) findViewById(R.id.radio_group);
@@ -115,16 +115,16 @@ public class Questions extends AppCompatActivity {
                 RadioButton answer = (RadioButton) findViewById(selectedId);
                 if (rg.getCheckedRadioButtonId() == -1) {
                     Log.d("SA", "No answer was chosen");
-                    curQ = curQ + 1;
+                    currentQuestion = currentQuestion + 1;
                     QuestionEngine();
                 } else if (answer.getText().equals(split_question[6])) {
-                    corQ = corQ + 1;
-                    curQ = curQ + 1;
+                    correctQuestions = correctQuestions + 1;
+                    currentQuestion = currentQuestion + 1;
                     QuestionEngine();
 
                     Log.d("SA", "Single answer is correct");
                 } else {
-                    curQ = curQ + 1;
+                    currentQuestion = currentQuestion + 1;
                     QuestionEngine();
                     Log.d("SA", "Single Answer is not correct");
                 }
@@ -138,12 +138,12 @@ public class Questions extends AppCompatActivity {
                 boolean cb3 = Boolean.parseBoolean(split_question[8]);
                 boolean cb4 = Boolean.parseBoolean(split_question[9]);
                 if (answer_one_box.isChecked() == cb1 && answer_two_box.isChecked() == cb2 && answer_three_box.isChecked() == cb3 && answer_four_box.isChecked() == cb4) {
-                    corQ = corQ + 1;
-                    curQ = curQ + 1;
+                    correctQuestions = correctQuestions + 1;
+                    currentQuestion = currentQuestion + 1;
                     QuestionEngine();
                     Log.d("ChA", "Multi answer is correct");
                 } else {
-                    curQ = curQ + 1;
+                    currentQuestion = currentQuestion + 1;
                     QuestionEngine();
                     Log.d("ChA", "Multi answer is not correct");
                 }
@@ -156,19 +156,19 @@ public class Questions extends AppCompatActivity {
                 if (txtAnswer.equals(split_question[2])) {
                     Log.d("USRINPT", "Answer is: " + split_question[2]);
                     Log.d("USRINPT", "text answer correct");
-                    corQ = corQ + 1;
-                    curQ = curQ + 1;
+                    correctQuestions = correctQuestions + 1;
+                    currentQuestion = currentQuestion + 1;
                     QuestionEngine();
                 } else {
                     Log.d("USRINPT", "text answer incorrect");
-                    curQ = curQ + 1;
+                    currentQuestion = currentQuestion + 1;
                     QuestionEngine();
                 }
             }
         } else {
             Intent intent = new Intent(getBaseContext(), Summary.class);
-            intent.putExtra("corQ", corQ);
-            intent.putExtra("max", chq);
+            intent.putExtra("correctQuestions", correctQuestions);
+            intent.putExtra("max", howManyQuestions);
             startActivity(intent);
         }
     }

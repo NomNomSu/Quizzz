@@ -15,8 +15,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int maxQ = 12;
-    private int currQ;
+    private int maxQuestions = 12;
+    private int currentQuestion;
     private String[] questions = new String[12];
     private String[] chosen_questions;
 
@@ -40,28 +40,28 @@ public class MainActivity extends AppCompatActivity {
         incQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currQ < maxQ - 1) {
+                if (currentQuestion < maxQuestions - 1) {
                     incQ.setEnabled(true);
                     decQ.setEnabled(true);
                 } else {
                     incQ.setEnabled(false);
                 }
-                currQ = currQ + 1;
-                displayWhenClicked(currQ);
-                Log.d("Iteration", "User wants to answer:" + currQ + "questions.");
+                currentQuestion = currentQuestion + 1;
+                displayWhenClicked(currentQuestion);
+                Log.d("Iteration", "User wants to answer:" + currentQuestion + "questions.");
             }
         });
         decQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currQ > 2) {
+                if (currentQuestion > 2) {
                     incQ.setEnabled(true);
                     decQ.setEnabled(true);
                 } else {
                     decQ.setEnabled(false);
                 }
-                currQ = currQ - 1;
-                displayWhenClicked(currQ);
+                currentQuestion = currentQuestion - 1;
+                displayWhenClicked(currentQuestion);
             }
         });
         start_button.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateArray() {
-        questions[0] = "single;What is the name of paranoid android in the Hitchhiker's Guide to the Galaxy?;Flippo;Marvin;Bob;Misery;Marvin";
+        questions[0] = "single;What is the name of paranoid android in the Hitchhiker's Guide to the Galaxy?;Marvin;Flippo;Bob;Misery;Marvin";
         questions[1] = "multi;Which three countries have both an Atlantic and Mediterranean coastline?;France;Spain;Italy;Morocco;true;true;false;true";
         questions[2] = "single;Who do the Italians call Topolino? ;God Father;Mickey Mouse;Tourists;Children;Mickey Mouse";
         questions[3] = "text;Which is the third letter of the greek alphabet?;gamma";
@@ -104,23 +104,23 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), "Number of questtions cannot be less than 1", Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            randomizeQuestions(currQ);
+            randomizeQuestions(currentQuestion);
             Intent intent = new Intent(getBaseContext(), Questions.class);
             intent.putExtra("questions", chosen_questions);
-            intent.putExtra("currQ", currQ);
+            intent.putExtra("currentQuestion", currentQuestion);
             startActivity(intent);
         }
     }
 
-    private void randomizeQuestions(int hmq) {
+    private void randomizeQuestions(int howManyQuestions) {
         chosen_questions = new String[12];
         List<Integer> chosenQ = new ArrayList();
         boolean repeats;
         // randomly takes 1 question and makes sure that it does not repeat
-        if (hmq < maxQ) {
-            for (int i = 0; i <= hmq; i++) {
+        if (howManyQuestions < maxQuestions) {
+            for (int i = 0; i <= howManyQuestions; i++) {
                 do {
-                    int random_number = randInt(hmq);
+                    int random_number = randInt(howManyQuestions);
                     if (chosenQ.contains(random_number)) {
                         repeats = true;
                     } else {
@@ -131,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } while (repeats);
             }
-        } else if (hmq == 12) {
-            int tmp = hmq - 1;
-            for (int i = 0; i <= tmp; i++) {
+        } else if (howManyQuestions == 12) {
+            int temp = howManyQuestions - 1;
+            for (int i = 0; i <= temp; i++) {
                 chosen_questions[i] = questions[i];
             }
         }
