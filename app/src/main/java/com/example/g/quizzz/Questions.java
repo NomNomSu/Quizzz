@@ -115,6 +115,7 @@ public class Questions extends AppCompatActivity {
                 RadioButton answer = (RadioButton) findViewById(selectedId);
                 if (rg.getCheckedRadioButtonId() == -1) {
                     Log.d("SA", "No answer was chosen");
+                    curQ = curQ + 1;
                     QuestionEngine();
                 } else if (answer.getText().equals(split_question[6])) {
                     corQ = corQ + 1;
@@ -139,6 +140,7 @@ public class Questions extends AppCompatActivity {
                 if (answer_one_box.isChecked() == cb1 && answer_two_box.isChecked() == cb2 && answer_three_box.isChecked() == cb3 && answer_four_box.isChecked() == cb4) {
                     corQ = corQ + 1;
                     curQ = curQ + 1;
+                    QuestionEngine();
                     Log.d("ChA", "Multi answer is correct");
                 } else {
                     curQ = curQ + 1;

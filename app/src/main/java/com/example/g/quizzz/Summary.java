@@ -29,9 +29,9 @@ public class Summary extends AppCompatActivity {
         if (corQ < 10) {
             scoreg.setText("0" + corQ);
         } else {
-            scoreg.setText(corQ);
+            scoreg.setText("" + corQ);
         }
-        if (chq < 10) {
+        if ((chq +1)< 10) {
             scorem.setText("0" + (chq + 1));
         } else {
             scorem.setText("" + (chq + 1));
