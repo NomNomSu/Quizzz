@@ -26,7 +26,7 @@ public class Questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //added
         Bundle extras = getIntent().getExtras();
-        howManyQuestions = extras.getInt("currQ");
+        howManyQuestions = extras.getInt("currentQuestion");
         questions = new String[howManyQuestions];
         questions = extras.getStringArray("questions");
 
